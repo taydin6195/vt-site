@@ -540,6 +540,10 @@ button { border:none; background:none; cursor:pointer; font-family:inherit; }
   transition:border-color .3s, background .3s; outline:none; box-sizing:border-box;
 }
 .form__input--icon { padding-left:42px; }
+/* iOS: verhindert automatisches Einzoomen bei Fokus auf Input-Felder */
+@supports (-webkit-touch-callout: none) {
+  .form__input, .form__textarea, .form__select { font-size:16px; }
+}
 .form__input:focus, .form__textarea:focus {
   border-color:var(--pink); background:rgba(255,255,255,.07);
 }
@@ -809,4 +813,100 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter:invert(.4); curso
   .cookie-banner__inner { flex-direction:column; align-items:stretch; gap:16px; }
   .cookie-banner__actions { justify-content:stretch; }
   .cookie-banner__btn { flex:1; text-align:center; }
+}
+
+/* ============================================
+   MOBILE OPTIMIERUNGEN — iPhone & kleine Screens
+   ============================================ */
+
+/* Turnstile widget auf Mobile */
+.cf-turnstile { margin:16px 0 4px; }
+.cf-turnstile iframe { max-width:100% !important; }
+
+/* Form section titles */
+@media (max-width:768px) {
+  .form__section-title { letter-spacing:2px; font-size:9px; }
+  .contact__form { padding:24px 18px; }
+  .deepdive__card-img { height:200px; }
+  .deepdive__card-body { padding:22px 22px 26px; }
+  .deepdive__card-title { font-size:22px; }
+  .video-showcase { padding:60px 0; }
+
+  /* Package cards */
+  .package-card { padding:28px 22px; }
+  .packages__grid { gap:16px; }
+
+  /* Process */
+  .process__note { font-size:13px; }
+
+  /* Testimonials */
+  .testimonial-slide__quote { font-size:16px; line-height:1.6; }
+
+  /* Section header spacing */
+  .section-header { margin-bottom:36px; }
+
+  /* Stats */
+  .stats { padding:36px 0; }
+  .stats__item { padding:14px 8px; }
+}
+
+@media (max-width:480px) {
+  /* Nav */
+  .nav__logo img { height:28px; }
+
+  /* Hero */
+  .hero__content { padding:0 4px; }
+  .hero__actions { gap:10px; }
+
+  /* Stats — 2×2 */
+  .stats__number { font-size:28px; }
+  .stats__label { font-size:9px; letter-spacing:2px; }
+
+  /* Sections */
+  .services,.packages,.games,.process,.testimonials,.faq,.contact,.deepdive { padding:60px 0; }
+  .video-showcase { padding:52px 0; }
+
+  /* Deep dive */
+  .deepdive__card-img { height:180px; }
+  .deepdive__card-body { padding:20px 18px 24px; }
+  .deepdive__card-title { font-size:20px; }
+  .deepdive__card-text { font-size:13px; }
+  .deepdive__card-pills { display:none; }
+
+  /* Service cards */
+  .service-card__title { font-size:18px; }
+  .service-card__body { padding:20px; }
+
+  /* Contact form */
+  .contact__form { padding:20px 14px; }
+  .form__label { letter-spacing:1px; }
+  .form__input, .form__textarea { font-size:16px; } /* iOS zoom prevention */
+  .form__select { font-size:16px; } /* iOS zoom prevention */
+  .form__section-title { font-size:9px; }
+  .form__submit { padding:14px 20px; font-size:13px; }
+
+  /* Package */
+  .package-card { padding:24px 18px; }
+  .package-card__name { font-size:22px; }
+  .package-card__feature-text { font-size:13px; }
+
+  /* Process */
+  .process__step-content h4 { font-size:15px; }
+  .process__step-content p { font-size:13px; }
+
+  /* Testimonials */
+  .testimonial-slide__quote { font-size:15px; }
+  .testimonial-slide__name { font-size:14px; }
+
+  /* FAQ */
+  .faq__question-text { font-size:13px; }
+  .faq__answer-text { font-size:13px; }
+
+  /* Footer */
+  .footer__copy { font-size:11px; }
+  .footer__brand-text { font-size:13px; }
+
+  /* Section titles */
+  .section-title { font-size:24px; letter-spacing:-1px; }
+  .contact__title { font-size:28px; letter-spacing:-1px; }
 }

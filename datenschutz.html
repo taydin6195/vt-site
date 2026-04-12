@@ -97,13 +97,21 @@
       margin-bottom: 0;
       font-size: 14px;
     }
-    .placeholder {
-      background: #fff3cd;
-      color: #856404;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 13px;
-      font-style: italic;
+    @media (max-width: 768px) {
+      .legal-page { padding: 100px 0 60px; }
+      .legal-page__title { letter-spacing: -1px; margin-bottom: 10px; }
+      .legal-block { margin-bottom: 28px; padding-bottom: 28px; }
+      .legal-block h2 { font-size: 17px; margin-bottom: 10px; }
+      .legal-block h3 { font-size: 15px; }
+      .legal-block p, .legal-block li { font-size: 14px; }
+      .legal-highlight { padding: 14px 16px; }
+    }
+
+    @media (max-width: 480px) {
+      .legal-page { padding: 88px 0 48px; }
+      .legal-block h2 { font-size: 15px; }
+      .legal-block p, .legal-block li { font-size: 13px; line-height: 1.7; }
+      .legal-page__updated { font-size: 12px; margin-bottom: 32px; }
     }
   </style>
 </head>

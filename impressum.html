@@ -67,13 +67,18 @@
     .legal-block a:hover {
       text-decoration: underline;
     }
-    .placeholder {
-      background: #fff3cd;
-      color: #856404;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 13px;
-      font-style: italic;
+    @media (max-width: 768px) {
+      .legal-page { padding: 100px 0 60px; }
+      .legal-page__title { letter-spacing: -1px; margin-bottom: 32px; }
+      .legal-block { margin-bottom: 28px; padding-bottom: 28px; }
+      .legal-block h2 { font-size: 17px; }
+      .legal-block p, .legal-block address { font-size: 14px; }
+    }
+
+    @media (max-width: 480px) {
+      .legal-page { padding: 88px 0 48px; }
+      .legal-block h2 { font-size: 16px; }
+      .legal-block p, .legal-block address { font-size: 13px; line-height: 1.7; }
     }
   </style>
 </head>
