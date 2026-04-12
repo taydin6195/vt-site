@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VR Teambuilding mit V&T Celebrations — Schweißt Ihr Team mit Virtual Reality zusammen. Multiplayer-Spiele, gemeinsame Herausforderungen, bundesweit buchbar.">
+  <meta name="keywords" content="VR Teambuilding, Virtual Reality Teambuilding, Teambuilding Berlin, Team Event VR, VR Betriebsausflug, Teambuilding bundesweit">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="V&T Celebrations">
+  <link rel="canonical" href="https://www.vt-celebrations.com/vr-teambuilding">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.vt-celebrations.com/vr-teambuilding">
+  <meta property="og:title" content="VR Teambuilding — V&T Celebrations">
+  <meta property="og:description" content="Stärken Sie Ihr Team mit einzigartigen VR-Erlebnissen. Multiplayer-Abenteuer, die verbinden — bundesweit buchbar.">
+  <meta property="og:image" content="https://cdn.prod.website-files.com/63976c17ec9f4cca3714ed08/665b4341b79e7a6119821f67_1232.webp">
+
+  <title>VR Teambuilding — Virtual Reality Events für Teams | V&T Celebrations</title>
+  <link rel="icon" href="media/images/favicon-light.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="media/images/favicon-dark.png" media="(prefers-color-scheme: dark)">
+  <link rel="apple-touch-icon" href="media/images/favicon-light.png">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "VR Teambuilding",
+    "provider": {
+      "@type": "Organization",
+      "name": "V&T Celebrations",
+      "url": "https://www.vt-celebrations.com"
+    },
+    "description": "Virtual Reality Teambuilding-Events für Unternehmen — bundesweit buchbar.",
+    "areaServed": "DE",
+    "url": "https://www.vt-celebrations.com/vr-teambuilding"
+  }
+  </script>
+
+  <style>
+    /* Subpage hero */
+    .subhero {
+      padding: 160px 0 100px;
+      background: linear-gradient(135deg, var(--dark) 0%, #1a0e1e 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .subhero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(251,163,161,.18) 0%, transparent 70%);
+    }
+    .subhero__label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 20px;
+    }
+    .subhero__title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .subhero__title em { color: var(--pink); font-style: normal; }
+    .subhero__subtitle {
+      font-size: clamp(15px, 2vw, 18px);
+      color: rgba(255,255,255,.65);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+      position: relative;
+    }
+    .subhero__actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+    /* Benefits grid */
+    .benefits { padding: 100px 0; background: var(--bg); }
+    .benefits__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .benefit-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 36px 28px;
+      transition: transform .4s var(--ease), box-shadow .4s var(--ease);
+    }
+    .benefit-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,.08); }
+    .benefit-card__icon { font-size: 36px; margin-bottom: 20px; }
+    .benefit-card__title { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+    .benefit-card__text { font-size: 14px; color: var(--text-light); line-height: 1.7; }
+
+    /* Highlight strip */
+    .highlight-strip {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #fdf5f5 0%, #f5eeed 100%);
+    }
+    .highlight-strip__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .highlight-strip__img { border-radius: var(--radius-md); overflow: hidden; }
+    .highlight-strip__img img { width: 100%; height: 360px; object-fit: cover; }
+    .highlight-strip__label { font-size: 11px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--pink); margin-bottom: 16px; }
+    .highlight-strip__title { font-family: var(--font-display); font-size: clamp(26px, 3vw, 38px); font-weight: 800; color: var(--text); margin-bottom: 20px; line-height: 1.2; }
+    .highlight-strip__text { font-size: 15px; color: var(--text-light); line-height: 1.8; margin-bottom: 32px; }
+    .highlight-strip__list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .highlight-strip__list li { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--text); }
+    .highlight-strip__list li::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--pink); flex-shrink: 0; }
+
+    /* CTA Section */
+    .subpage-cta {
+      padding: 100px 0;
+      background: var(--dark);
+      text-align: center;
+    }
+    .subpage-cta__title { font-family: var(--font-display); font-size: clamp(28px, 4vw, 48px); font-weight: 800; color: var(--white); margin-bottom: 16px; }
+    .subpage-cta__title em { color: var(--pink); font-style: normal; }
+    .subpage-cta__text { font-size: 15px; color: rgba(255,255,255,.6); margin-bottom: 40px; }
+    .subpage-cta__actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    @media (max-width: 768px) {
+      .benefits__grid { grid-template-columns: 1fr; }
+      .highlight-strip__inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAV ========== -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="https://cdn.prod.website-files.com/63976c17ec9f4cca3714ed08/63f7c7a70ffe31465507ec99_vtcelebrations%20(andere%20farbe).png" alt="V&T Celebrations" loading="eager">
+      </a>
+      <div class="nav__links" id="navLinks">
+        <a href="index.html#services" class="nav__link">Leistungen</a>
+        <a href="vr-teambuilding.html" class="nav__link nav__link--active">Teambuilding</a>
+        <a href="firmenevents.html" class="nav__link">Firmenevents</a>
+        <a href="index.html#packages" class="nav__link">Pakete</a>
+        <a href="index.html#games" class="nav__link">VR-Welten</a>
+        <a href="index.html#faq" class="nav__link">FAQ</a>
+        <a href="index.html#contact" class="nav__cta">Kontakt</a>
+      </div>
+      <button class="nav__burger" id="navBurger" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="subhero">
+    <div class="container">
+      <span class="subhero__label">Virtual Reality Teambuilding</span>
+      <h1 class="subhero__title">Gemeinsam in neue<br><em>Welten eintauchen</em></h1>
+      <p class="subhero__subtitle">VR-Teambuilding schweißt zusammen wie nichts anderes. Multiplayer-Abenteuer, die kommunizieren, vertrauen und lachen lassen — unvergesslich.</p>
+      <div class="subhero__actions">
+        <a href="index.html#contact" class="btn btn--primary">Jetzt anfragen <span>→</span></a>
+        <a href="#benefits" class="btn btn--outline-light">Mehr erfahren</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BENEFITS ========== -->
+  <section class="benefits" id="benefits">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Warum VR-Teambuilding?</span>
+        <h2 class="section-title">Das bringt es Ihrem Team</h2>
+      </div>
+      <div class="benefits__grid">
+        <div class="benefit-card">
+          <div class="benefit-card__icon">🤝</div>
+          <h3 class="benefit-card__title">Kommunikation stärken</h3>
+          <p class="benefit-card__text">VR-Spiele wie „Keep Talking and Nobody Explodes" erfordern präzise Teamkommunikation unter Druck — perfektes Training für den Arbeitsalltag.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card__icon">😄</div>
+          <h3 class="benefit-card__title">Spaß & Zusammenhalt</h3>
+          <p class="benefit-card__text">Gemeinsame lustige Momente in VR schaffen echte Verbindungen. Kollegen werden zu Mitstreitern — auch über Hierarchiegrenzen hinweg.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card__icon">🧠</div>
+          <h3 class="benefit-card__title">Problemlösung trainieren</h3>
+          <p class="benefit-card__text">Escape-Room-Szenarien und kooperative Herausforderungen fördern kreatives Denken und strategische Planung im Team.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card__icon">🌍</div>
+          <h3 class="benefit-card__title">Inklusive Erlebnisse</h3>
+          <p class="benefit-card__text">VR kennt keine körperlichen Grenzen im traditionellen Sinn. Geeignet für alle Altersgruppen und körperliche Voraussetzungen.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card__icon">📍</div>
+          <h3 class="benefit-card__title">Wir kommen zu Ihnen</h3>
+          <p class="benefit-card__text">Kein Venue-Stress: Wir liefern, bauen auf und betreuen alles vor Ort — bundesweit. Ihr Büro, Ihre Eventlocation, Ihr Outdoor-Gelände.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card__icon">🎯</div>
+          <h3 class="benefit-card__title">Maßgeschneidert</h3>
+          <p class="benefit-card__text">Von der Spielauswahl bis zum Ablaufplan — wir stimmen alles auf Ihre Teamgröße, Ihre Ziele und Ihr Budget ab.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HIGHLIGHT ========== -->
+  <section class="highlight-strip">
+    <div class="container">
+      <div class="highlight-strip__inner">
+        <div class="highlight-strip__img">
+          <img src="https://cdn.prod.website-files.com/63976c17ec9f4cca3714ed08/665b4341b79e7a6119821f67_1232.webp" alt="VR Teambuilding Event" loading="lazy">
+        </div>
+        <div>
+          <div class="highlight-strip__label">Ablauf</div>
+          <h2 class="highlight-strip__title">So läuft Ihr VR-Teambuilding ab</h2>
+          <p class="highlight-strip__text">Von der ersten Anfrage bis zum letzten High-Five — wir kümmern uns um alles, damit Ihr Team einfach genießen kann.</p>
+          <ul class="highlight-strip__list">
+            <li>Kostenlose Beratung & individuelle Planung</li>
+            <li>Aufbau & Einweisung durch unser Team vor Ort</li>
+            <li>2–6 mobile VR-Stationen je nach Paket</li>
+            <li>Professionelle Betreuung während des gesamten Events</li>
+            <li>Abbau ohne Aufwand für Sie</li>
+          </ul>
+          <a href="index.html#contact" class="btn btn--primary">Teambuilding anfragen →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="subpage-cta">
+    <div class="container">
+      <h2 class="subpage-cta__title">Bereit für ein <em>unvergessliches</em> Teamerlebnis?</h2>
+      <p class="subpage-cta__text">Sprechen Sie uns an — wir planen Ihr VR-Teambuilding kostenlos und unverbindlich.</p>
+      <div class="subpage-cta__actions">
+        <a href="index.html#contact" class="btn btn--primary">Jetzt anfragen <span>→</span></a>
+        <a href="tel:+4917634698477" class="btn btn--outline-light">☎ +49 176 34698477</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div>
+          <a href="index.html" class="footer__logo-link">
+            <img src="media/images/logo-vt.png" alt="V&T Celebrations" class="footer__logo-img" loading="lazy">
+          </a>
+          <p class="footer__brand-text">Planen Sie mit V&T Celebrations und tauchen Sie in eine neue Welt der Events ein.</p>
+          <div class="footer__socials">
+            <a href="https://www.facebook.com/profile.php?id=100093549532968" class="footer__social" target="_blank" rel="noopener">f</a>
+            <a href="https://www.linkedin.com/company/v-t-celebrations/" class="footer__social" target="_blank" rel="noopener">in</a>
+            <a href="https://www.instagram.com/vt_celebrations/" class="footer__social" target="_blank" rel="noopener">IG</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Navigation</h4>
+          <a href="index.html#services" class="footer__link">Leistungen</a>
+          <a href="vr-teambuilding.html" class="footer__link">VR Teambuilding</a>
+          <a href="firmenevents.html" class="footer__link">Firmenevents</a>
+          <a href="index.html#packages" class="footer__link">Pakete</a>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Rechtliches</h4>
+          <a href="https://www.vt-celebrations.com/impressum" class="footer__link">Impressum</a>
+          <a href="https://www.vt-celebrations.com/datenschutz" class="footer__link">Datenschutz</a>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Kontakt</h4>
+          <a href="mailto:info@vt-celebrations.com" class="footer__contact-item">✉ info@vt-celebrations.com</a>
+          <a href="tel:+4917634698477" class="footer__contact-item">☎ +49 176 34698477</a>
+          <span class="footer__contact-item">📍 Berlin, Deutschland</span>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copy">© 2026 V&T Celebrations — All rights reserved</span>
+        <div class="footer__legal">
+          <a href="https://www.vt-celebrations.com/impressum">Impressum</a>
+          <a href="https://www.vt-celebrations.com/datenschutz">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav
+    const burger = document.getElementById('navBurger');
+    const links = document.getElementById('navLinks');
+    burger?.addEventListener('click', () => {
+      links.classList.toggle('nav__links--open');
+      burger.classList.toggle('nav__burger--open');
+    });
+  </script>
+</body>
+</html>
