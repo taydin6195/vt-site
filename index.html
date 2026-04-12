@@ -22,10 +22,9 @@
   <meta name="twitter:image" content="https://cdn.prod.website-files.com/63976c17ec9f4cca3714ed08/6432e4a46b91981625c5ca3d_Hero1blur2.png">
 
   <title>V&T Celebrations — VR Events & Teambuilding bundesweit</title>
-  <!-- Favicon: hell = schwarze Schrift, dunkel = weiße Schrift -->
-  <link rel="icon" href="media/images/favicon-light.png" media="(prefers-color-scheme: light)">
-  <link rel="icon" href="media/images/favicon-dark.png" media="(prefers-color-scheme: dark)">
-  <link rel="apple-touch-icon" href="media/images/favicon-light.png">
+  <!-- Favicon: SVG mit automatischer dark/light-Anpassung -->
+  <link rel="icon" href="media/images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="media/images/logo-vt.png">
   <link rel="stylesheet" href="css/styles.css">
 
   <!-- Structured Data -->
@@ -146,6 +145,53 @@
             <p class="service-card__text">Teambuilding-Abenteuer, Firmenevents oder kreative Workshops — wir bringen Ihre Veranstaltung auf das nächste Level.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DEEP DIVE — Links zu Unterseiten ========== -->
+  <section class="deepdive">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Mehr erfahren</span>
+        <h2 class="section-title">Für welchen Anlass planen Sie?</h2>
+      </div>
+      <div class="deepdive__grid">
+
+        <a href="vr-teambuilding.html" class="deepdive__card reveal">
+          <div class="deepdive__card-img">
+            <img src="https://cdn.prod.website-files.com/63976c17ec9f4cca3714ed08/665b4341b79e7a6119821f67_1232.webp" alt="VR Teambuilding" loading="lazy">
+          </div>
+          <div class="deepdive__card-body">
+            <span class="deepdive__card-tag">Teambuilding</span>
+            <h3 class="deepdive__card-title">VR Teambuilding</h3>
+            <p class="deepdive__card-text">Schweißen Sie Ihr Team mit Multiplayer-Abenteuern, kooperativen Challenges und unvergesslichen gemeinsamen Momenten zusammen.</p>
+            <div class="deepdive__card-pills">
+              <span>🤝 Kommunikation</span>
+              <span>🎮 Multiplayer</span>
+              <span>🏆 Teamgeist</span>
+            </div>
+            <span class="deepdive__card-link">Mehr erfahren →</span>
+          </div>
+        </a>
+
+        <a href="firmenevents.html" class="deepdive__card reveal reveal-delay-1">
+          <div class="deepdive__card-img">
+            <img src="https://cdn.prod.website-files.com/63976c17ec9f4cca3714ed08/66083a0a1112c7b953a1b330_23.jpg" alt="VR Firmenevents" loading="lazy">
+          </div>
+          <div class="deepdive__card-body">
+            <span class="deepdive__card-tag">Firmenevents</span>
+            <h3 class="deepdive__card-title">VR Firmenevents</h3>
+            <p class="deepdive__card-text">Von der Messe bis zur Betriebsfeier — begeistern Sie Mitarbeiter, Kunden und Partner mit Virtual Reality als Highlight Ihres Events.</p>
+            <div class="deepdive__card-pills">
+              <span>🏛️ Messen</span>
+              <span>🎊 Betriebsfeiern</span>
+              <span>🤝 Kundenevents</span>
+            </div>
+            <span class="deepdive__card-link">Mehr erfahren →</span>
+          </div>
+        </a>
+
       </div>
     </div>
   </section>
@@ -400,17 +446,107 @@
           </div>
         </div>
         <div class="reveal reveal-delay-2">
-          <form id="contactForm" class="contact__form" action="https://formspree.io/f/xpzednrk" method="POST">
-            <input type="hidden" name="_subject" value="Neue Anfrage über vt-celebrations.com">
+          <form id="contactForm" class="contact__form" action="https://api.web3forms.com/submit" method="POST">
+            <!-- Web3Forms: Access Key eintragen nach Registrierung auf web3forms.com -->
+            <input type="hidden" name="access_key" value="62e8c0a5-748b-4306-b99e-6dc13079cc3d">
+            <input type="hidden" name="subject" value="Neue Anfrage — V&T Celebrations">
+            <input type="hidden" name="from_name" value="V&T Celebrations Website">
+            <input type="hidden" name="redirect" value="false">
+            <input type="checkbox" name="botcheck" style="display:none">
+
+            <!-- Schritt 1: Kontaktdaten -->
+            <div class="form__section-title">Ihre Kontaktdaten</div>
             <div class="form__row">
-              <div><label class="form__label" for="name">Name *</label><input class="form__input" type="text" id="name" name="name" placeholder="Ihr Name" required></div>
-              <div><label class="form__label" for="email">E-Mail *</label><input class="form__input" type="email" id="email" name="email" placeholder="ihre@email.de" required></div>
+              <div class="form__group">
+                <label class="form__label" for="name">Name *</label>
+                <div class="form__input-wrap">
+                  <span class="form__icon">👤</span>
+                  <input class="form__input form__input--icon" type="text" id="name" name="name" placeholder="Vor- und Nachname" required>
+                </div>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="email">E-Mail *</label>
+                <div class="form__input-wrap">
+                  <span class="form__icon">✉</span>
+                  <input class="form__input form__input--icon" type="email" id="email" name="email" placeholder="ihre@email.de" required>
+                </div>
+              </div>
             </div>
-            <div class="form__group"><label class="form__label" for="event">Art des Events</label><input class="form__input" type="text" id="event" name="event" placeholder="z.B. Firmenevent, Geburtstag, Messe..."></div>
-            <div class="form__group"><label class="form__label" for="message">Nachricht *</label><textarea class="form__textarea" id="message" name="message" placeholder="Erzählen Sie uns von Ihrem Event..." required></textarea></div>
-            <button type="submit" class="form__submit">Anfrage senden →</button>
+            <div class="form__group">
+              <label class="form__label" for="phone">Telefon</label>
+              <div class="form__input-wrap">
+                <span class="form__icon">☎</span>
+                <input class="form__input form__input--icon" type="tel" id="phone" name="phone" placeholder="+49 ...">
+              </div>
+            </div>
+
+            <!-- Schritt 2: Event-Details -->
+            <div class="form__section-title form__section-title--mt">Ihr Event</div>
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label" for="event-type">Art des Events *</label>
+                <div class="form__input-wrap">
+                  <span class="form__icon">🎯</span>
+                  <select class="form__input form__input--icon form__select" id="event-type" name="event_type" required>
+                    <option value="" disabled selected>Bitte wählen…</option>
+                    <option value="Firmenevent">Firmenevent</option>
+                    <option value="Teambuilding">Teambuilding</option>
+                    <option value="Messe / Kongress">Messe / Kongress</option>
+                    <option value="Betriebsfeier">Betriebsfeier (Weihnachten, Sommer…)</option>
+                    <option value="Geburtstag / Privatfeier">Geburtstag / Privatfeier</option>
+                    <option value="Workshop">Workshop / Schulung</option>
+                    <option value="Sonstiges">Sonstiges</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="event-date">Geplantes Datum</label>
+                <div class="form__input-wrap">
+                  <span class="form__icon">📅</span>
+                  <input class="form__input form__input--icon" type="date" id="event-date" name="event_date">
+                </div>
+              </div>
+            </div>
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label" for="guests">Ungefähre Teilnehmerzahl</label>
+                <div class="form__input-wrap">
+                  <span class="form__icon">👥</span>
+                  <select class="form__input form__input--icon form__select" id="guests" name="guests">
+                    <option value="" disabled selected>Anzahl wählen…</option>
+                    <option value="bis 20">Bis 20 Personen</option>
+                    <option value="21–50">21 – 50 Personen</option>
+                    <option value="51–100">51 – 100 Personen</option>
+                    <option value="101–200">101 – 200 Personen</option>
+                    <option value="200+">Über 200 Personen</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="location">Veranstaltungsort / Stadt</label>
+                <div class="form__input-wrap">
+                  <span class="form__icon">📍</span>
+                  <input class="form__input form__input--icon" type="text" id="location" name="location" placeholder="z.B. Berlin, München…">
+                </div>
+              </div>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="message">Nachricht *</label>
+              <textarea class="form__textarea" id="message" name="message" placeholder="Erzählen Sie uns mehr über Ihr Event — je mehr wir wissen, desto besser können wir planen." required></textarea>
+            </div>
+
+            <button type="submit" class="form__submit">
+              <span class="form__submit-text">Anfrage senden</span>
+              <span class="form__submit-arrow">→</span>
+            </button>
+            <p class="form__privacy">Mit dem Absenden stimmen Sie unserer <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> zu.</p>
           </form>
-          <div class="form__success"><div class="form__success-icon">🎉</div><div class="form__success-text">Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen.</div></div>
+          <div class="form__success">
+            <div class="form__success-icon">🎉</div>
+            <div class="form__success-title">Vielen Dank!</div>
+            <div class="form__success-text">Wir haben Ihre Anfrage erhalten und melden uns innerhalb von <strong>24 Stunden</strong> bei Ihnen.</div>
+            <a href="mailto:info@vt-celebrations.com" class="form__success-contact">✉ info@vt-celebrations.com</a>
+          </div>
         </div>
       </div>
     </div>
@@ -441,8 +577,8 @@
         </div>
         <div>
           <h4 class="footer__col-title">Rechtliches</h4>
-          <a href="https://www.vt-celebrations.com/impressum" class="footer__link">Impressum</a>
-          <a href="https://www.vt-celebrations.com/datenschutz" class="footer__link">Datenschutz</a>
+          <a href="impressum.html" class="footer__link">Impressum</a>
+          <a href="datenschutz.html" class="footer__link">Datenschutz</a>
         </div>
         <div>
           <h4 class="footer__col-title">Kontakt</h4>
@@ -454,8 +590,8 @@
       <div class="footer__bottom">
         <span class="footer__copy">© 2026 V&T Celebrations — All rights reserved</span>
         <div class="footer__legal">
-          <a href="https://www.vt-celebrations.com/impressum">Impressum</a>
-          <a href="https://www.vt-celebrations.com/datenschutz">Datenschutz</a>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
         </div>
       </div>
     </div>
@@ -468,7 +604,7 @@
         <span class="cookie-banner__icon">🍪</span>
         <div>
           <strong>Cookies & Datenschutz</strong>
-          <p>Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten. <a href="https://www.vt-celebrations.com/datenschutz">Mehr erfahren</a></p>
+          <p>Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten. <a href="datenschutz.html">Mehr erfahren</a></p>
         </div>
       </div>
       <div class="cookie-banner__actions">

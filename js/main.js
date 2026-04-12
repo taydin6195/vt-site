@@ -430,8 +430,10 @@ function initContactForm() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = form.querySelector('.form__submit');
-    const originalText = btn.textContent;
-    btn.textContent = 'Wird gesendet...';
+    const textSpan = btn.querySelector('.form__submit-text');
+    const arrowSpan = btn.querySelector('.form__submit-arrow');
+    if (textSpan) textSpan.textContent = 'Wird gesendet…';
+    if (arrowSpan) arrowSpan.style.display = 'none';
     btn.disabled = true;
 
     const data = new FormData(form);
@@ -443,22 +445,29 @@ function initContactForm() {
         headers: { 'Accept': 'application/json' }
       });
 
-      if (res.ok) {
+      const json = await res.json();
+
+      if (res.ok && json.success) {
         form.style.display = 'none';
         document.querySelector('.form__success').classList.add('show');
       } else {
-        btn.textContent = 'Fehler — nochmal versuchen';
+        const msg = json.message || 'Fehler — nochmal versuchen';
+        if (textSpan) textSpan.textContent = msg;
+        if (arrowSpan) arrowSpan.style.display = '';
         btn.disabled = false;
-        setTimeout(() => { btn.textContent = originalText; }, 3000);
+        setTimeout(() => {
+          if (textSpan) textSpan.textContent = 'Anfrage senden';
+        }, 4000);
       }
     } catch (err) {
-      // Fallback: mailto
-      const name = data.get('name');
-      const email = data.get('email');
-      const message = data.get('message');
-      const subject = data.get('event') || 'Anfrage';
-      window.location.href = `mailto:info@vt-celebrations.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\n\n${message}`)}`;
-      btn.textContent = originalText;
+      // Netzwerkfehler — Fallback mailto
+      const name = data.get('name') || '';
+      const email = data.get('email') || '';
+      const message = data.get('message') || '';
+      const eventType = data.get('event_type') || 'Anfrage';
+      window.location.href = `mailto:info@vt-celebrations.com?subject=${encodeURIComponent(eventType)}&body=${encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\n\n${message}`)}`;
+      if (textSpan) textSpan.textContent = 'Anfrage senden';
+      if (arrowSpan) arrowSpan.style.display = '';
       btn.disabled = false;
     }
   });
