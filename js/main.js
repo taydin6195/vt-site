@@ -427,11 +427,55 @@ function initContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
+  // Zeitstempel: wann wurde das Formular das erste Mal berührt
+  let formTouchedAt = null;
+  form.addEventListener('focusin', () => {
+    if (!formTouchedAt) formTouchedAt = Date.now();
+  }, { once: true });
+  // Fallback: Zeitstempel ab Seitenload
+  const pageLoadedAt = Date.now();
+
+  function showError(textSpan, arrowSpan, btn, msg) {
+    if (textSpan) textSpan.textContent = msg;
+    if (arrowSpan) arrowSpan.style.display = '';
+    btn.disabled = false;
+    setTimeout(() => {
+      if (textSpan) textSpan.textContent = 'Anfrage senden';
+    }, 4000);
+  }
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = form.querySelector('.form__submit');
     const textSpan = btn.querySelector('.form__submit-text');
     const arrowSpan = btn.querySelector('.form__submit-arrow');
+
+    // ── Schutz 1: Honeypot ──────────────────────────────
+    // Bots füllen das versteckte botcheck-Feld aus
+    const honeypot = form.querySelector('input[name="botcheck"]');
+    if (honeypot && honeypot.checked) return; // still — kein Feedback an den Bot
+
+    // ── Schutz 2: Zeitcheck ──────────────────────────────
+    // Echte Menschen brauchen mindestens 4 Sekunden zum Ausfüllen
+    const elapsed = Date.now() - (formTouchedAt || pageLoadedAt);
+    if (elapsed < 4000) return; // still abbrechen
+
+    // ── Schutz 3: Rate Limiting ──────────────────────────
+    // Max. 3 Anfragen pro Stunde pro Browser
+    const RL_KEY = 'vt_form_submissions';
+    const now = Date.now();
+    const HOUR = 60 * 60 * 1000;
+    let submissions = [];
+    try {
+      submissions = JSON.parse(localStorage.getItem(RL_KEY) || '[]');
+    } catch (_) {}
+    // Einträge älter als 1 Stunde entfernen
+    submissions = submissions.filter(t => now - t < HOUR);
+    if (submissions.length >= 3) {
+      showError(textSpan, arrowSpan, btn, 'Zu viele Anfragen — bitte später versuchen');
+      return;
+    }
+
     if (textSpan) textSpan.textContent = 'Wird gesendet…';
     if (arrowSpan) arrowSpan.style.display = 'none';
     btn.disabled = true;
@@ -448,16 +492,14 @@ function initContactForm() {
       const json = await res.json();
 
       if (res.ok && json.success) {
+        // Erfolgreiche Übertragung im Rate-Limit speichern
+        submissions.push(now);
+        try { localStorage.setItem(RL_KEY, JSON.stringify(submissions)); } catch (_) {}
         form.style.display = 'none';
         document.querySelector('.form__success').classList.add('show');
       } else {
-        const msg = json.message || 'Fehler — nochmal versuchen';
-        if (textSpan) textSpan.textContent = msg;
-        if (arrowSpan) arrowSpan.style.display = '';
-        btn.disabled = false;
-        setTimeout(() => {
-          if (textSpan) textSpan.textContent = 'Anfrage senden';
-        }, 4000);
+        const msg = json.message || 'Fehler — bitte nochmal versuchen';
+        showError(textSpan, arrowSpan, btn, msg);
       }
     } catch (err) {
       // Netzwerkfehler — Fallback mailto
