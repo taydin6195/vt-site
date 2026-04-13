@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGalleryDuplicate();
   initSmoothScroll();
   initContactForm();
+  initModal();
 });
 
 /* ============================================
@@ -538,6 +539,111 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+/* ============================================
+   MODAL — Video & Bild Lightbox
+   ============================================ */
+function initModal() {
+  const modal       = document.getElementById('modal');
+  if (!modal) return;
+
+  const backdrop    = modal.querySelector('.modal__backdrop');
+  const closeBtn    = modal.querySelector('.modal__close');
+  const videoWrap   = document.getElementById('modalVideoWrap');
+  const videoFrame  = document.getElementById('modalVideo');
+  const imgWrap     = document.getElementById('modalImgWrap');
+  const imgEl       = document.getElementById('modalImg');
+  const prevBtn     = document.getElementById('modalPrev');
+  const nextBtn     = document.getElementById('modalNext');
+
+  // Alle Gallery-Bilder sammeln für Navigation
+  let galleryItems = [];
+  let currentGalleryIndex = 0;
+
+  function openVideo(videoId) {
+    videoFrame.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+    videoWrap.classList.add('active');
+    imgWrap.classList.remove('active');
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openImage(src, index) {
+    imgEl.src = src;
+    imgWrap.classList.add('active');
+    videoWrap.classList.remove('active');
+    currentGalleryIndex = index;
+    updateNavVisibility();
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    // Video stoppen: src leeren nach Animation
+    setTimeout(() => {
+      videoFrame.src = '';
+      imgEl.src = '';
+      videoWrap.classList.remove('active');
+      imgWrap.classList.remove('active');
+    }, 350);
+  }
+
+  function updateNavVisibility() {
+    prevBtn.style.display = galleryItems.length > 1 ? '' : 'none';
+    nextBtn.style.display = galleryItems.length > 1 ? '' : 'none';
+  }
+
+  function showGalleryImage(index) {
+    currentGalleryIndex = (index + galleryItems.length) % galleryItems.length;
+    const item = galleryItems[currentGalleryIndex];
+    imgEl.style.opacity = '0';
+    setTimeout(() => {
+      imgEl.src = item.dataset.img;
+      imgEl.style.opacity = '1';
+    }, 150);
+  }
+
+  // Game Cards — Video öffnen
+  document.querySelectorAll('.game-card[data-video]').forEach(card => {
+    card.addEventListener('click', () => openVideo(card.dataset.video));
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openVideo(card.dataset.video); });
+  });
+
+  // Gallery Items — Bild öffnen
+  // Nur einzigartige (nicht-duplizierte) Items sammeln
+  const allGalleryItems = Array.from(document.querySelectorAll('.gallery__item[data-img]'));
+  // Gallery wird per marquee-JS dupliziert — nur erste Hälfte verwenden
+  const uniqueCount = Math.ceil(allGalleryItems.length / 2);
+  galleryItems = allGalleryItems.slice(0, uniqueCount).filter(el => el.dataset.img);
+
+  allGalleryItems.forEach((item, i) => {
+    const realIndex = i % galleryItems.length;
+    item.style.cursor = 'pointer';
+    item.addEventListener('click', () => openImage(item.dataset.img, realIndex));
+    item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openImage(item.dataset.img, realIndex); });
+  });
+
+  // Navigation
+  prevBtn.addEventListener('click', () => showGalleryImage(currentGalleryIndex - 1));
+  nextBtn.addEventListener('click', () => showGalleryImage(currentGalleryIndex + 1));
+
+  // Schließen
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => {
+    if (!modal.classList.contains('open')) return;
+    if (e.key === 'Escape') closeModal();
+    if (imgWrap.classList.contains('active')) {
+      if (e.key === 'ArrowLeft')  showGalleryImage(currentGalleryIndex - 1);
+      if (e.key === 'ArrowRight') showGalleryImage(currentGalleryIndex + 1);
+    }
+  });
+
+  // Bild-Übergangs-Stil
+  imgEl.style.transition = 'opacity .15s ease';
+}
 
 /* ============================================
    COOKIE BANNER
